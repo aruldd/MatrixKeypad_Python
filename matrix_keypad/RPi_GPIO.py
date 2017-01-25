@@ -3,7 +3,7 @@
 import RPi.GPIO as GPIO
  
 class keypad():
-    def __init__(self, columnCount = 3):
+    def __init__(self, columnCount = 3, row=[18,23,24,25], column=[4,17,22,21]):
         GPIO.setmode(GPIO.BOARD)
 
         # CONSTANTS 
@@ -26,8 +26,8 @@ class keypad():
                 ["*",0,"#","D"]
             ]
 
-            self.ROW         = [18,23,24,25]
-            self.COLUMN      = [4,17,22,21]
+            self.ROW         = row
+            self.COLUMN      = column
         else:
             return
      
@@ -72,7 +72,7 @@ class keypad():
                 colVal=j
                  
         # if colVal is not 0 thru 2 then no button was pressed and we can exit
-        if colVal <0 or colVal >2:
+        if colVal <0 or colVal >3:
             self.exit()
             return
  
